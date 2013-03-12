@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <meta charset="utf-8" />
 
-<canvas id="canvas" width="800" height="600"></canvas>
+<canvas id="canvas" width="400" height="300"></canvas>
 
-<!-- script src="main_mini.js"></script -->
+<script src="main_mini.js"></script>
 <script src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>
 
 <script>
@@ -16,17 +16,40 @@
 
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addListener(stage);
+    createjs.Ticker.addEventListener("tick", tick);
+
+    Module.initialize();
   }
 
-  function draw_circle(x,y) {
+  function draw_circle(x, y, radius) {
     var g = new createjs.Graphics();
-    g.setStrokeStyle(1);
-    g.beginStroke("#f00");
-    g.drawCircle(0, 0, 20);
+    g.beginFill("#66f"); //"rgba(150,150,255,0.25");
+    g.drawCircle(0, 0, radius);
     var circle = new createjs.Shape(g);
     circle.x = x;
     circle.y = y;
     stage.addChild(circle);
+  }
+  
+  function draw() {
+    var pts = Module.get_points();
+    var n   = Module.ccall('get_num_points', 'number', null, []);
+    function norm(x,y) {
+      return {x: (x/60+0.5) * canvas.width,
+              y: -y*8+canvas.height, //(1-(y/50)) * canvas.height};
+             };
+    }
+    for (var i = 1; i < n; i++) {
+      var a = norm(pts[i].x, pts[i].z);
+      draw_circle(a.x, a.y, 4);
+    }
+  }
+
+  function tick() {
+    Module.step();
+    stage.removeAllChildren();
+    draw();
     stage.update();
   }
+
 </script>

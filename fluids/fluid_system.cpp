@@ -453,14 +453,14 @@ void FluidSystem::SPH_CreateExample ( int n, int nmax )
 		m_Vec [ SPH_INITMIN ].Set ( -2.5, -2.5, 0 );	
 		m_Vec [ SPH_INITMAX ].Set ( 2.5, 2.5, 1.6 );*/  
 		
-		m_Vec [ SPH_VOLMIN ].Set ( -30, -30, 0 );
-		m_Vec [ SPH_VOLMAX ].Set ( 30, 30, 40 );		
+		m_Vec [ SPH_VOLMIN ].Set ( -30, -1, 0 );
+		m_Vec [ SPH_VOLMAX ].Set ( 30, 1, 40 );		
 
 		//m_Vec [ SPH_INITMIN ].Set ( -5, -5, 10 );
 		//m_Vec [ SPH_INITMAX ].Set ( 5, 5, 20 );
 		
-		m_Vec [ SPH_INITMIN ].Set ( -20, -26, 10 );
-		m_Vec [ SPH_INITMAX ].Set ( 20, 26, 40 );
+		m_Vec [ SPH_INITMIN ].Set ( -20, -1, 10 );
+		m_Vec [ SPH_INITMAX ].Set ( 20, 1, 40 );
 
 		m_Param [ FORCE_XMIN_SIN ] = 12.0;
 		m_Param [ BOUND_ZMIN_SLOPE ] = 0.05;

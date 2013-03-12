@@ -24,7 +24,7 @@ FluidSystem			psys;
 
 Vector3DF	obj_from, obj_angs, obj_dang;
 
-const int		psys_nmax = 512;
+const int		psys_nmax = 256;
 int		iClrMode = 0;
 bool	bPntDraw = false;
 bool    bPause = false;
@@ -60,18 +60,7 @@ float *get_points() {
 
 void step () 
 {
-  char *dat;
-  Point *p;
-
-	if ( !bPause ) psys.Run ();
-
-  dat = psys.mBuf[0].data;
-  for (int i = 0; i < psys.NumPoints(); i++) {
-	  p = (Point*) dat;
-	  printf("%03d pos: (%f, %f, %f)\n", i, p->pos.x, p->pos.y, p->pos.z);
-    dat += psys.mBuf[0].stride; 
-  }
-
+	psys.Run();
 	frame++;
 }
 

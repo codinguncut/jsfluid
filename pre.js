@@ -1,7 +1,11 @@
 var Module = {
   initialize: function() {Module._init();},
-  step: function() {Module._step;},
+
+  step: function() {Module._step();},
   //flda: new Float32Array(5),
+
+  get_num_points: function() {Module.ccall('get_num_points', 'number', null, [])},
+
   get_points: function() {
     var ptr = Module.ccall('get_points', null, null, []);
     var n   = Module.ccall('get_num_points', 'number', null, []);
