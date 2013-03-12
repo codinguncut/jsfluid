@@ -1,2 +1,5 @@
 *.o
 debug.txt
+main_mini.js
+jsfluid.js
+*.bc

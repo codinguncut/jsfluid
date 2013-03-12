@@ -24,7 +24,7 @@ FluidSystem			psys;
 
 Vector3DF	obj_from, obj_angs, obj_dang;
 
-const int		psys_nmax = 256;
+const int		psys_nmax = 512;
 int		iClrMode = 0;
 bool	bPntDraw = false;
 bool    bPause = false;

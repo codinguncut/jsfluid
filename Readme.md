@@ -1,4 +1,6 @@
-# jsfluids
+# jsFLUIDS v.2
+
+jsFLUIDS v.2 - A Fast, Open Source, Fluid Simulator.
 
 Port of [Fluids v.2](http://www.rchoetzlein.com/eng/graphics/fluids.htm) to javascript using emscripten.
 
@@ -7,15 +9,32 @@ Licensed under ZLib license.
 Ported by Johannes Ahlmann, 2013-03-12, http://johannesahlmann.com
 
 ## Status
-* compiles in linux
-* runs in linux using opengl
-* compiles in emscripten
-* runs in firefox and prints to console
+* Chrome
+    * canvas
+        * runs blazingly fast
+        * impressively 60% of time is spent in easel/canvas
+    * webgl
+        * THE BOMB! 
+        * 34% in canvas particle renderer
+        * 12% in three.js "render"
+* Firefox
+    * canvas
+        * runs ok-ish
+        * 50% of time spent in easel/canvas
+        * 15% in ComputePressureGridEv
+        * 10% in emulated Math.imul
+    * webgl
+        * much better
+        * 30% ComputePressureGridEv
+        * 20% Math.imul emulation
+        * 14% canvas particleRender
 
 ## Todo
-* wrap c++ library to callable javascript code
-* get proof of concept going
-* check out performance in browser
+* compile with closure (currently gives errors ;(
+* check performance on iPhone (probably terrible)
+* test performance improvements in `fluids_v3`
+* build adapter to box2d/rigid body physics
+* use stats.js for benchmarking
 
 <hr/>
 

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<meta charset="utf-8">
+
+<style type="text/css">
+  body {
+    background-color: #000000;
+    margin: 0px;
+    overflow: hidden;
+  }
+</style>
+
+<body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r53/three.min.js"></script>
+<script src="jsfluid.js"></script>
+
+<script>
+  // from here
+  // http://creativejs.com/uploads/tutorials/three/Part1_particles/ThreeParticles.html
+
+  var camera, 
+      scene, 
+      renderer,
+      particles = [];
+
+  window.onload = init();
+
+  function init() {
+    Module.initialize();
+    Module.step();
+
+    camera = new THREE.PerspectiveCamera(80, 
+                    window.innerWidth / window.innerHeight, 1, 4000);
+
+    scene = new THREE.Scene();
+    camera.position.z = 1000;
+    scene.add(camera);
+
+    renderer = new THREE.CanvasRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    document.body.appendChild(renderer.domElement);
+
+    makeParticles(); 
+    setInterval(update, 1000/60); 
+  }
+
+
+  function update() {
+    updateParticles();
+    renderer.render(scene, camera);
+  }
+
+
+  function makeParticles() { 
+    var particle, material; 
+    var n = Module._get_num_points();
+
+    for (var i = 0; i < n; i++) {
+      material = new THREE.ParticleCanvasMaterial(
+                        { color: 0x6666ff, 
+                          opacity: 0.25,
+                          program: particleRender });
+      particle = new THREE.Particle(material);
+
+      particle.position.x = 0;
+      particle.position.y = 0;
+      particle.position.z = 300;
+      particle.scale.x = particle.scale.y = 20;
+      scene.add(particle);
+      particles.push(particle); 
+    }
+  }
+ 
+
+  function particleRender(context) {
+    context.beginPath();
+    context.arc(0, 0, 1, 0,  Math.PI * 2, true);
+    context.fill();
+  };
+
+  
+  function updateParticles() { 
+    Module.step();
+    var pts = Module.get_points();
+    for(var i=0; i<particles.length; i++) {
+
+      particle = particles[i]; 
+
+      particle.position.x = pts[i].x/30*1000;
+      particle.position.y = pts[i].z*20-500;
+
+      // if the particle is too close move it to the back
+      if(particle.position.z>1000) particle.position.z-=2000; 
+    }
+  }
+</script>
+</body>
