@@ -1,5 +1,5 @@
 
-#include "common_defs.h"
+#include "../common/common_defs.h"
 #include "gl_helper.h"
 
 #include <math.h>

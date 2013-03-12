@@ -32,7 +32,7 @@
 	#include "fluid_system_host.cuh"	
 #endif
 #include "fluids/fluid_system.h"
-#include "common/gl_helper.h"
+#include "gl/gl_helper.h"
 
 #ifdef _MSC_VER						// Windows
 	#include <gl/glut.h>

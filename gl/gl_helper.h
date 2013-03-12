@@ -3,7 +3,7 @@
 #ifndef GL_HELPER
 	#define GL_HELPER
 
-	#include "common_defs.h"
+	#include "../common/common_defs.h"
 
 	#include <GLee.h>
 	#include <GL/glext.h>	
@@ -23,7 +23,7 @@
 	#endif
 	
 	//#include "image.h"
-	#include "mtime.h"
+	#include "../common/mtime.h"
 
 	extern void checkOpenGL ();
 	extern void drawText ( int x, int y, char* msg);
