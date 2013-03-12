@@ -112,8 +112,8 @@
 		void HeapAddFree ( hpos pos, int size );
 		
 
-	protected:
 		std::vector< GeomBuf >		mBuf;	
+	protected:
 		std::vector< GeomAttr >		mAttribute;
 
 		hpos						mHeapNum;
