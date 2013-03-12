@@ -15,6 +15,10 @@
 
 #include "fluids/fluid_system.h"
 
+#ifdef EMSCRIPTEN
+#include <emscripten.h>
+#endif
+
 // Globals
 FluidSystem			psys;
 
@@ -26,6 +30,11 @@ bool	bPntDraw = false;
 bool    bPause = false;
 int frame;
 
+
+void PointSet::Draw ( float* view_mat, float rad )
+{
+}
+
 void step () 
 {
   char *dat;
@@ -36,7 +45,7 @@ void step ()
   dat = psys.mBuf[0].data;
   for (int i = 0; i < psys.NumPoints(); i++) {
 	  p = (Point*) dat;
-	  printf("%000d pos: (%f, %f, %f)\n", i, p->pos.x, p->pos.y, p->pos.z);
+	  printf("%03d pos: (%f, %f, %f)\n", i, p->pos.x, p->pos.y, p->pos.z);
     dat += psys.mBuf[0].stride; 
   }
 
@@ -59,9 +68,13 @@ void init ()
 	psys.SetParam ( PNT_DRAWMODE, int(bPntDraw ? 1:0) );
 	psys.SetParam ( CLR_MODE, iClrMode );	
 
+#ifdef EMSCRIPTEN
+  emscripten_set_main_loop(step, 60, true);
+#else
   while (true) {
     step();    
   }
+#endif
 }
 
 

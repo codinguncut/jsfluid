@@ -25,7 +25,7 @@
 //#include <conio.h>
 
 #include "../common/common_defs.h"
-#include "../common/mtime.h"
+//#include "../common/mtime.h"
 #include "fluid_system.h"
 
 #ifdef BUILD_CUDA
@@ -130,7 +130,7 @@ void FluidSystem::Run ()
 {
 	bool bTiming = true;
 
-	mint::Time start, stop;
+	//mint::Time start, stop;
 	
 	float ss = m_Param [ SPH_PDIST ] / m_Param[ SPH_SIMSCALE ];		// simulation scale (not Schutzstaffel)
 
@@ -183,21 +183,21 @@ void FluidSystem::Run ()
 		} else {
 			// -- CPU only --
 
-			start.SetSystemTime ( ACC_NSEC );
+			//start.SetSystemTime ( ACC_NSEC );
 			Grid_InsertParticles ();
-			if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "INSERT: %s\n", stop.GetReadableTime().c_str() );*/ }
+			//if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "INSERT: %s\n", stop.GetReadableTime().c_str() );*/ }
 		
-			start.SetSystemTime ( ACC_NSEC );
+			//start.SetSystemTime ( ACC_NSEC );
 			SPH_ComputePressureGrid ();
-			if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "PRESS: %s\n", stop.GetReadableTime().c_str() );*/ }
+			//if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "PRESS: %s\n", stop.GetReadableTime().c_str() );*/ }
 
-			start.SetSystemTime ( ACC_NSEC );
+			//start.SetSystemTime ( ACC_NSEC );
 			SPH_ComputeForceGridNC ();		
-			if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "FORCE: %s\n", stop.GetReadableTime().c_str() );*/ }
+			//if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "FORCE: %s\n", stop.GetReadableTime().c_str() );*/ }
 
-			start.SetSystemTime ( ACC_NSEC );
+			//start.SetSystemTime ( ACC_NSEC );
 			Advance();
-			if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "ADV: %s\n", stop.GetReadableTime().c_str() );*/ }
+			//if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "ADV: %s\n", stop.GetReadableTime().c_str() );*/ }
 		}		
 		
 	#endif

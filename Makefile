@@ -1,19 +1,19 @@
-COMMON_OBJS = common/geomx.o common/matrix.o common/mdebug.o common/mesh.o common/mtime.o common/particle.o common/point_set.o common/vector.o 
+COMMON_OBJS = common/geomx.o common/matrix.o common/mdebug.o common/mesh.o common/particle.o common/point_set.o common/vector.o 
 FLUIDS_OBJS = fluids/fluid_system.o
-GL_OBJS     = gl/point_set_gl.o gl/gl_helper.o gl/mesh_gl.o gl/fluid_system_gl.o
+GL_OBJS     = gl/point_set_gl.o gl/gl_helper.o gl/mesh_gl.o gl/fluid_system_gl.o common/mtime.o 
 OBJS				= $(COMMON_OBJS) $(FLUIDS_OBJS) $(GL_OBJS)
 CC					= g++
 
-all: main
+all: main_mini
 
 main: $(OBJS) main.o
 	$(CC) -o $@ $(OBJS) main.o -lGL -lglut -lGLU #-ljpeg #-lglee 
 
-main_mini: $(OBJS) main_mini.o
-	$(CC) -o $@ $(OBJS) main_mini.o -lGL -lglut -lGLU #-ljpeg #-lglee 
+main_mini: $(COMMON_OBJS) $(FLUIDS_OBJS) main_mini.o
+	$(CC) -o $@ $(COMMON_OBJS) $(FLUIDS_OBJS) main_mini.o
 
-main_mini.bc: $(OBJS) main_mini.o
-	em++ -o $@ $(OBJS) main_mini.o
+main_mini.bc: $(COMMON_OBJS) $(FLUIDS_OBJS) main_mini.o
+	em++ -o $@ $(COMMON_OBJS) $(FLUIDS_OBJS) main_mini.o
 
 main_mini.js: main_mini.bc
 	emcc -o $@ $<
