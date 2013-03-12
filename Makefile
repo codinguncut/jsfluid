@@ -3,13 +3,24 @@ FLUIDS_OBJS = fluids/fluid_system.o
 MAIN_OBJS   = main.o
 GL_OBJS     = gl/point_set_gl.o gl/gl_helper.o gl/mesh_gl.o gl/fluid_system_gl.o
 OBJS				= $(COMMON_OBJS) $(FLUIDS_OBJS) $(MAIN_OBJS) $(GL_OBJS)
+CC					= g++
+
 all: main
 
 main: $(OBJS)
-	g++ -o $@ $(OBJS) -lGL -lglut -lGLU -lglee -ljpeg
+	$(CC) -o $@ $(OBJS) -lGL -lglut -lGLU #-ljpeg #-lglee 
+
+main.bc: $(OBJS)
+	em++ -o $@ $(OBJS)
+
+main.js: main.bc
+	emcc -o $@ $<
+
+main.html: main.bc
+	emcc -o $@ $<
 
 .o: $@.cpp $@.h
-	g++ -c $<
+	$(CC) -c $<
 
 clean: 
-	rm -f $(OBJS) main
+	rm -f $(OBJS) main main.bc main.js main.html

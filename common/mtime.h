@@ -32,6 +32,17 @@
 		#define	DAY_SCALAR		86400000000000LL
 	#endif
 
+  #ifdef EMSCRIPTEN
+        typedef signed long long       mstime;
+        typedef signed long long       sjtime;
+
+		#define MSEC_SCALAR		1000000LL
+		#define SEC_SCALAR		1000000000LL
+		#define MIN_SCALAR		60000000000LL
+		#define HR_SCALAR		3600000000000LL
+		#define	DAY_SCALAR		86400000000000LL
+  #endif
+
 	#ifdef __CYGWIN__	
 		#include <largeint.h>			// found in \cygwin\usr\include\w32api
         typedef __int64       mstime;

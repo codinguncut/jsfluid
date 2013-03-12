@@ -4,8 +4,11 @@
 	#define GL_HELPER
 
 	#include "../common/common_defs.h"
+  #undef USE_SHADOWS
 
-	#include <GLee.h>
+	//#include <GLee.h>
+   #define GL_GLEXT_PROTOTYPES
+  #include <GL/glut.h>	
 	#include <GL/glext.h>	
 
 	#ifdef _MSC_VER						// Windows
@@ -19,7 +22,6 @@
 			#include <GLee.h>
 		#endif
 		#include <GL/glext.h>	
-		#include <GL/glut.h>	
 	#endif
 	
 	//#include "image.h"
