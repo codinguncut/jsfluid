@@ -1,4 +1,4 @@
-OBJS = common/geomx.o common/gl_helper.o common/image.o common/matrix.o common/mdebug.o common/mesh.o common/mtime.o common/particle.o common/point_set.o common/vector.o fluids/fluid.o fluids/fluid_system.o main.o
+OBJS = common/geomx.o common/gl_helper.o common/matrix.o common/mdebug.o common/mesh.o common/mtime.o common/particle.o common/point_set.o common/vector.o fluids/fluid.o fluids/fluid_system.o main.o # common/image.o 
 all: main
 
 main: $(OBJS)

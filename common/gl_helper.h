@@ -22,7 +22,7 @@
 		#include <GL/glut.h>	
 	#endif
 	
-	#include "image.h"
+	//#include "image.h"
 	#include "mtime.h"
 
 	extern void checkOpenGL ();

@@ -27,7 +27,7 @@
 #ifdef _MSC_VER
 	#include <gl/glut.h>
 #else
-	#include <GL/glut.h>
+	//#include <GL/glut.h>
 #endif
 
 #include "../common/common_defs.h"
@@ -157,19 +157,19 @@ void FluidSystem::Run ()
 				// -- GPU --
 				start.SetSystemTime ( ACC_NSEC );		
 				TransferToCUDA ( mBuf[0].data, (int*) &m_Grid[0], NumPoints() );
-				if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; printf ( "TO: %s\n", stop.GetReadableTime().c_str() ); }
+				if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "TO: %s\n", stop.GetReadableTime().c_str() );*/ }
 			
 				start.SetSystemTime ( ACC_NSEC );		
 				Grid_InsertParticlesCUDA ();
-				if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; printf ( "INSERT (CUDA): %s\n", stop.GetReadableTime().c_str() ); }
+				if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "INSERT (CUDA): %s\n", stop.GetReadableTime().c_str() );*/ }
 
 				start.SetSystemTime ( ACC_NSEC );
 				SPH_ComputePressureCUDA ();
-				if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; printf ( "PRESS (CUDA): %s\n", stop.GetReadableTime().c_str() ); }
+				if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "PRESS (CUDA): %s\n", stop.GetReadableTime().c_str() );*/ }
 
 				start.SetSystemTime ( ACC_NSEC );
 				SPH_ComputeForceCUDA (); 
-				if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; printf ( "FORCE (CUDA): %s\n", stop.GetReadableTime().c_str() ); }
+				if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "FORCE (CUDA): %s\n", stop.GetReadableTime().c_str() );*/ }
 
 				//** CUDA integrator is incomplete..
 				// Once integrator is done, we can remove TransferTo/From steps
@@ -179,7 +179,7 @@ void FluidSystem::Run ()
 
 				start.SetSystemTime ( ACC_NSEC );		
 				TransferFromCUDA ( mBuf[0].data, (int*) &m_Grid[0], NumPoints() );
-				if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; printf ( "FROM: %s\n", stop.GetReadableTime().c_str() ); }
+				if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "FROM: %s\n", stop.GetReadableTime().c_str() );*/ }
 
 				// .. Do advance on CPU 
 				Advance();
@@ -191,19 +191,19 @@ void FluidSystem::Run ()
 
 			start.SetSystemTime ( ACC_NSEC );
 			Grid_InsertParticles ();
-			if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; printf ( "INSERT: %s\n", stop.GetReadableTime().c_str() ); }
+			if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "INSERT: %s\n", stop.GetReadableTime().c_str() );*/ }
 		
 			start.SetSystemTime ( ACC_NSEC );
 			SPH_ComputePressureGrid ();
-			if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; printf ( "PRESS: %s\n", stop.GetReadableTime().c_str() ); }
+			if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "PRESS: %s\n", stop.GetReadableTime().c_str() );*/ }
 
 			start.SetSystemTime ( ACC_NSEC );
 			SPH_ComputeForceGridNC ();		
-			if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; printf ( "FORCE: %s\n", stop.GetReadableTime().c_str() ); }
+			if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "FORCE: %s\n", stop.GetReadableTime().c_str() );*/ }
 
 			start.SetSystemTime ( ACC_NSEC );
 			Advance();
-			if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; printf ( "ADV: %s\n", stop.GetReadableTime().c_str() ); }
+			if ( bTiming) { stop.SetSystemTime ( ACC_NSEC ); stop = stop - start; /*printf ( "ADV: %s\n", stop.GetReadableTime().c_str() );*/ }
 		}		
 		
 	#endif
@@ -213,6 +213,7 @@ void FluidSystem::Run ()
 
 void FluidSystem::SPH_DrawDomain ()
 {
+  /*
 	Vector3DF min, max;
 	min = m_Vec[SPH_VOLMIN];
 	max = m_Vec[SPH_VOLMAX];
@@ -225,6 +226,7 @@ void FluidSystem::SPH_DrawDomain ()
 	glVertex3f ( min.x, min.y, min.z );	glVertex3f ( min.x, max.y, min.z );
 	glVertex3f ( max.x, min.y, min.z );	glVertex3f ( max.x, max.y, min.z );
 	glEnd ();
+  */
 }
 
 void FluidSystem::Advance ()
