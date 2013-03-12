@@ -24,7 +24,6 @@
 	#define DEF_FLUID
 	
 	#include "../common/vector.h"
-
 	#include "../common/common_defs.h"
 
 	struct Fluid {

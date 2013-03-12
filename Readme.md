@@ -1,3 +1,11 @@
+# jsfluids
+
+Port of Fluids v.2 to linux/javascript.
+Licensed under ZLib license.
+
+Johannes Ahlmann, 2013-03-12, johannesahlmann.com
+
+# Original READ_ME.txt
 
 FLUIDS v.2 - SPH Fluid Simulator for CPU and GPU
 Copyright (C) 2008. Rama Hoetzlein, http://www.rchoetzlein.com
