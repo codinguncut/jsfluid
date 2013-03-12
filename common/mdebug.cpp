@@ -92,7 +92,7 @@ void CDebug::Stop ()
 	m_bStarted = false;
 }
 
-void CDebug::SendToFile ( char* fname )
+void CDebug::SendToFile ( const char* fname )
 {
 	if (m_bStarted) Stop ();
 	m_bToFile = true;
@@ -296,7 +296,7 @@ void CError::Start ()
 	Start ( "" );
 }
 
-void CError::Start ( char* fname )
+void CError::Start ( const char* fname )
 {
 	if ( fname != 0x0 && strlen(fname) > 0 ) {
 		// Read error message file. NOT YET IMPLEMENTED
@@ -327,7 +327,7 @@ void CError::Exit ( int code )
 	debug.Exit ( code );
 }
 
-void CError::Print ( char* msg)
+void CError::Print ( const char* msg)
 {
 	// User-level error (no additional info)
 	m_ErrorID = "";
@@ -362,7 +362,7 @@ void CError::Print ( std::string subsys, std::string msg ){
 	OutputMessage ();
 }
 
-void CError::PrintF ( std::string subsys, char* msg, ... )
+void CError::PrintF ( std::string subsys, const char* msg, ... )
 {
 	char buf[2000];
 	va_list argptr;

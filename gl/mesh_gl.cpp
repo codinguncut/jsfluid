@@ -171,6 +171,9 @@ void Mesh::DrawGL ( float* viewmat )
 		glPolygonMode ( GL_FRONT_AND_BACK, GL_FILL );*/
 
 		} break;
+  default:
+    printf("uncaught case in DrawGL");
+    break;
 	}
 }
 
@@ -189,6 +192,9 @@ void Mesh::DrawFaceGL ( float* viewmat )
 		glDepthRange (0.0, 1.0); glColor3f (1.0, 1.0, 1.0 );	
 		DrawFacesCM ( viewmat, m_CurrF, m_CurrF );
 		break;
+  default:
+    printf("uncaught case in DrawFaceGL");
+    break;
 	};
 }
 

@@ -28,7 +28,7 @@
 		void SendToConsole ( bool tf );
 		void SendToSysbox ( bool tf );
 		void SendToFile ( bool tf );
-		void SendToFile ( char *filename );
+		void SendToFile ( const char *filename );
 		
 		// Output functions
 		void Exit ( int code );
@@ -70,7 +70,7 @@
 		CError ();
 
 		void Start ();
-		void Start ( char* fname );
+		void Start ( const char* fname );
 		void LoadErrors ();	
 		void OutputMessage ();
 		void Exit ()	{ Exit (EXIT_SUCCESS); }
@@ -79,8 +79,8 @@
 		// Unregistered errors		
 		void Print ( std::string subsys, std::string msg );				
 		void Print ( std::string msg );
-		void Print ( char* msg);
-		void PrintF ( std::string subsys, char *msg, ... );				
+		void Print ( const char* msg);
+		void PrintF ( std::string subsys, const char *msg, ... );				
 
 		// Registered errors		
 		void PrintErr ( std::string err );

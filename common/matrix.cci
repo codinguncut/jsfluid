@@ -1600,6 +1600,7 @@ inline MatrixF &MatrixF::Ortho (double sx, double sy, double vn, double vf)
 	*n++ = (VTYPE) 0.0; *n++ = (VTYPE) (1.0/sy); *n++ = (VTYPE) 0.0; *n++ = (VTYPE) 0.0;
 	*n++ = (VTYPE) 0.0; *n++ = (VTYPE) 0.0; *n++ = (VTYPE) (-2.0/(vf-vn)); *n++ = (VTYPE) (-(vf+vn)/(vf-vn));
 	*n++ = (VTYPE) 0.0; *n++ = (VTYPE) 0.0; *n++ = (VTYPE) 0; *n++ = (VTYPE) 1.0;
+  return *this;
 }
 
 inline MatrixF &MatrixF::Translate (double tx, double ty, double tz)
@@ -1848,7 +1849,7 @@ inline void MatrixF::Print ( char* fname )
 		}
 		fprintf ( fp, "%s\n", buf);
 	}
-	fprintf ( fp, "---------------------------------------\n", buf);
+	fprintf ( fp, "---------------------------------------\n");
 	fflush ( fp );
 	fclose ( fp );	
 }
@@ -1981,6 +1982,7 @@ inline Matrix4F &Matrix4F::Ortho (double sx, double sy, double vn, double vf)
 	data[ 4] = (VTYPE) 0.0;		data[ 5] = (VTYPE) (1.0/sy);data[ 6] = (VTYPE) 0.0;				data[ 7] = (VTYPE) 0.0;
 	data[ 8] = (VTYPE) 0.0;		data[ 9] = (VTYPE) 0.0;		data[10]= (VTYPE) (-2.0/(vf-vn));	data[11] = (VTYPE) (-(vf+vn)/(vf-vn));
 	data[12] = (VTYPE) 0.0;		data[13] = (VTYPE) 0.0;		data[14] = (VTYPE) 0;				data[15] = (VTYPE) 1.0;
+  return *this;
 }
 
 inline Matrix4F &Matrix4F::Translate (double tx, double ty, double tz)
@@ -2007,6 +2009,7 @@ inline Matrix4F &Matrix4F::SRT (const Vector3DF &c1, const Vector3DF &c2, const 
 	data[ 4] = (VTYPE) c1.y*s.y; data[ 5] = (VTYPE) c2.y*s.y; data[ 6] = (VTYPE) c3.y*s.y;  data[ 7] = (VTYPE) 0.0;
 	data[ 8] = (VTYPE) c1.z*s.z; data[ 9] = (VTYPE) c2.z*s.z; data[10] = (VTYPE) c3.z*s.z;  data[11] = (VTYPE) 0.0;
 	data[12] = (VTYPE) t.x;		 data[13] = (VTYPE) t.y;	  data[14] = (VTYPE) t.z;		data[15] = (VTYPE) 1.0;	
+  return *this;
 }
 inline Matrix4F &Matrix4F::SRT (const Vector3DF &c1, const Vector3DF &c2, const Vector3DF &c3, const Vector3DF& t, const float s)
 {
@@ -2023,6 +2026,7 @@ inline Matrix4F &Matrix4F::InvTRS (const Vector3DF &c1, const Vector3DF &c2, con
 	data[ 4] = (VTYPE) c2.x/s.x; data[ 5] = (VTYPE) c2.y/s.y; data[ 6] = (VTYPE) c2.z/s.z;  data[ 7] = (VTYPE) 0.0;
 	data[ 8] = (VTYPE) c3.x/s.x; data[ 9] = (VTYPE) c3.y/s.y; data[10] = (VTYPE) c3.z/s.z;  data[11] = (VTYPE) 0.0;
 	data[12] = (VTYPE) -t.x/s.x; data[13] = (VTYPE) -t.y/s.y; data[14] = (VTYPE) -t.z/s.z;  data[15] = (VTYPE) 1.0;	
+  return *this;
 }
 inline Matrix4F &Matrix4F::InvTRS (const Vector3DF &c1, const Vector3DF &c2, const Vector3DF &c3, const Vector3DF& t, const float s)
 {
@@ -2030,6 +2034,7 @@ inline Matrix4F &Matrix4F::InvTRS (const Vector3DF &c1, const Vector3DF &c2, con
 	data[ 4] = (VTYPE) c2.x/s; data[ 5] = (VTYPE) c2.y/s; data[ 6] = (VTYPE) c2.z/s;  data[ 7] = (VTYPE) 0.0;
 	data[ 8] = (VTYPE) c3.x/s; data[ 9] = (VTYPE) c3.y/s; data[10] = (VTYPE) c3.z/s;  data[11] = (VTYPE) 0.0;
 	data[12] = (VTYPE) -t.x/s; data[13] = (VTYPE) -t.y/s; data[14] = (VTYPE) -t.z/s;  data[15] = (VTYPE) 1.0;	
+  return *this;
 }
 
 inline float Matrix4F::GetF (const int r, const int c)		{return (float) data[ (r<<2) + c];}

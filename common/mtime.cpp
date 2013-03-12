@@ -422,7 +422,7 @@ std::string Time::GetReadableTime ()
 std::string Time::GetReadableSJT ()
 {
 	char buf[200];	
-	sprintf ( buf, "%I64d", m_CurrTime );
+	sprintf ( buf, "%lld", m_CurrTime );
 	return std::string ( buf );
 }
 

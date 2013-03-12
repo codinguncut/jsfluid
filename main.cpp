@@ -576,7 +576,7 @@ int main ( int argc, char **argv )
 //	glutFullScreen ();
  
 	// initialize parameters
-	init();
+	//init();
 
 	// wait for something to happen
 	glutMainLoop();

@@ -1602,6 +1602,7 @@ inline MatrixF &MatrixF::Ortho (double sx, double sy, double vn, double vf)
 	*n++ = (VTYPE) 0.0; *n++ = (VTYPE) (1.0/sy); *n++ = (VTYPE) 0.0; *n++ = (VTYPE) 0.0;
 	*n++ = (VTYPE) 0.0; *n++ = (VTYPE) 0.0; *n++ = (VTYPE) (-2.0/(vf-vn)); *n++ = (VTYPE) (-(vf+vn)/(vf-vn));
 	*n++ = (VTYPE) 0.0; *n++ = (VTYPE) 0.0; *n++ = (VTYPE) 0; *n++ = (VTYPE) 1.0;
+  return *this;
 }
 
 inline MatrixF &MatrixF::Translate (double tx, double ty, double tz)

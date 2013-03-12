@@ -17,7 +17,7 @@ main.js: main.bc
 	emcc -o $@ $<
 
 main.html: main.bc
-	emcc -o $@ $<
+	emcc -o $@ $< -s TOTAL_MEMORY=128000000
 
 .o: $@.cpp $@.h
 	$(CC) -c $<
