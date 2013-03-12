@@ -22,7 +22,7 @@
 
 
 
-#include <conio.h>
+//#include <conio.h>
 
 #ifdef _MSC_VER
 	#include <gl/glut.h>
@@ -30,8 +30,8 @@
 	#include <GL/glut.h>
 #endif
 
-#include "common_defs.h"
-#include "mtime.h"
+#include "../common/common_defs.h"
+#include "../common/mtime.h"
 #include "fluid_system.h"
 
 #ifdef BUILD_CUDA

@@ -23,9 +23,9 @@
 #ifndef DEF_FLUID
 	#define DEF_FLUID
 	
-	#include "vector.h"
+	#include "../common/vector.h"
 
-	#include "common_defs.h"
+	#include "../common/common_defs.h"
 
 	struct Fluid {
 	public:

@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <string.h>
 
 #include "mdebug.h"
 
@@ -134,7 +135,7 @@ void CDebug::Print ( std::string subsys, std::string msg )
 	}
 }
 
-void CDebug::Print (char* msg)
+void CDebug::Print (const char* msg)
 {
 	if ( m_bStarted ) {
 		if ( m_bToFile ) {
@@ -170,7 +171,7 @@ void CDebug::Print ( std::string msg )
 	}	
 }
 
-void CDebug::PrintF ( std::string substr, char* format, ... )
+void CDebug::PrintF ( std::string substr, const char* format, ... )
 {
 	// Note: This is the >only< way to do this. There is no general way to
 	// pass on all the arguments from one ellipsis function to another.
@@ -205,7 +206,7 @@ void CDebug::PrintF ( std::string substr, char* format, ... )
 }
 
 
-void CDebug::Printf ( char* format, ... )
+void CDebug::Printf ( const char* format, ... )
 {
 	// Note: This is the >only< way to do this. There is no general way to
 	// pass on all the arguments from one ellipsis function to another.
@@ -262,7 +263,7 @@ void CDebug::PrintErr ( std::string errid, std::string subsys, std::string msg, 
 				#include <windows.h>
 				int hr = MessageBoxA ( 0x0, disp, caption, MB_OK);			
 			#else 
-				strncpy ( caption, m_ErrorSubsys.c_str(), 200 );
+				strncpy ( caption, "m_ErrorSubsys.c_str()", 200 );
 				strncpy ( disp, msg.c_str(), 4000 ); 		
 			#endif
 		}

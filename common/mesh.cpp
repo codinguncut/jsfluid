@@ -1,24 +1,24 @@
 
-#include <conio.h>
-#include <vector.h>
+//#include <conio.h>
+#include "vector.h"
 #include "mesh.h"
 #include "mdebug.h"
 //#include "mfile.h"
 
 //#include "event.h"
 
-#include <gl/glut.h>
+#include <GL/glut.h>
 
 #define DEGtoRAD	(3.141592/180.0)
 
 bool Mesh::mbInitStatic = false;
-int Mesh::miBufSize[MAX_MFORMAT][MAX_BFORMAT];
+int MeshInfo::miBufSize[MAX_MFORMAT][MAX_BFORMAT];
 
 Mesh::Mesh ()
 {
 	debug.SendToConsole ( true );
 
-	m_Mform = MFormat::UDef;
+	m_Mform = MeshInfo::UDef;
 	m_CurrF = 0;
 	m_Vbuf = BUF_UNDEF;
 	m_Ebuf = BUF_UNDEF;

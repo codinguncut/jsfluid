@@ -26,13 +26,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "common_defs.h"
+#include "common/common_defs.h"
 
 #ifdef BUILD_CUDA
 	#include "fluid_system_host.cuh"	
 #endif
-#include "fluid_system.h"
-#include "gl_helper.h"
+#include "fluids/fluid_system.h"
+#include "common/gl_helper.h"
 
 #ifdef _MSC_VER						// Windows
 	#include <gl/glut.h>

@@ -34,9 +34,9 @@
 		void Exit ( int code );
 		void Print ( std::string subsys, std::string msg );
 		void Print ( std::string msg );
-		void Print ( char* msg);
-		void PrintF ( std::string subsys, char *msg, ... );
-		void Printf ( char *msg, ... );
+		void Print ( const char* msg);
+		void PrintF ( std::string subsys, const char *msg, ... );
+		void Printf ( const char *msg, ... );
 		void PrintErr ( std::string errid, std::string subsys, std::string msg, std::string sysbox );	// Used by Error class
 
 		// Filtering functions

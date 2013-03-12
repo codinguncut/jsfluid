@@ -30,7 +30,7 @@
 	#include <stdlib.h>
 	#include <math.h>
 
-	#include "point_set.h"
+	#include "../common/point_set.h"
 	#include "fluid.h"
 	
 	// Scalar params

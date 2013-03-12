@@ -5,18 +5,18 @@
 
 	#include "common_defs.h"
 
-	#include <gl/glee.h>
-	#include <gl/glext.h>	
+	#include <GLee.h>
+	#include <GL/glext.h>	
 
 	#ifdef _MSC_VER						// Windows
 		#ifdef USE_SHADOWS
-			#include <gl/glee.h>
-			#include <gl/glext.h>	
+			#include <GLee.h>
+			#include <GL/glext.h>	
 		#endif			
-		#include <gl/glut.h>
+		#include <GL/glut.h>
 	#else								// Linux
 		#ifdef USE_SHADOWS
-			#include "GLee.h"
+			#include <GLee.h>
 		#endif
 		#include <GL/glext.h>	
 		#include <GL/glut.h>	

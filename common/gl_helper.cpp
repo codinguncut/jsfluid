@@ -3,6 +3,7 @@
 #include "gl_helper.h"
 
 #include <math.h>
+#include <string.h>
 
 
 // Shadow Light
