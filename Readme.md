@@ -10,7 +10,7 @@ Ported by Johannes Ahlmann, 2013-03-12, http://johannesahlmann.com
 * compiles in linux
 * runs in linux using opengl
 * compiles in emscripten
-* does not yet run in the browser: `uncaught exception: 5259272`
+* runs in firefox and prints to console
 
 ## Todo
 * wrap c++ library to callable javascript code

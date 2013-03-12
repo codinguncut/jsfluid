@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+
+<canvas id="canvas" width="800" height="600"></canvas>
+
+<!-- script src="main_mini.js"></script -->
+<script src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>
+
+<script>
+  var canvas, stage;
+  window.onload = init;
+
+  function init() {
+    canvas = document.getElementById("canvas");
+    stage  = new createjs.Stage(canvas);
+
+    createjs.Ticker.setFPS(60);
+    createjs.Ticker.addListener(stage);
+  }
+
+  function draw_circle(x,y) {
+    var g = new createjs.Graphics();
+    g.setStrokeStyle(1);
+    g.beginStroke("#f00");
+    g.drawCircle(0, 0, 20);
+    var circle = new createjs.Shape(g);
+    circle.x = x;
+    circle.y = y;
+    stage.addChild(circle);
+    stage.update();
+  }
+</script>

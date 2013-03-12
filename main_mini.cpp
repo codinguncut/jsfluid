@@ -24,7 +24,7 @@ FluidSystem			psys;
 
 Vector3DF	obj_from, obj_angs, obj_dang;
 
-int		psys_nmax = 512;
+const int		psys_nmax = 512;
 int		iClrMode = 0;
 bool	bPntDraw = false;
 bool    bPause = false;
@@ -33,6 +33,29 @@ int frame;
 
 void PointSet::Draw ( float* view_mat, float rad )
 {
+}
+
+extern "C" {
+float cpoints[psys_nmax*3];
+
+int get_num_points() {
+  return psys.NumPoints();
+}
+
+float *get_points() {
+  char *dat;
+  Point *p;
+  float *cp;
+
+  dat = psys.mBuf[0].data;
+  for (int i = 0; i < psys.NumPoints(); i++) {
+	  p = (Point*) dat;
+    cpoints[i*3+0] = p->pos.x;
+    cpoints[i*3+1] = p->pos.y;
+    cpoints[i*3+2] = p->pos.z;
+    dat += psys.mBuf[0].stride; 
+  }
+  return cpoints;
 }
 
 void step () 
@@ -67,7 +90,10 @@ void init ()
 
 	psys.SetParam ( PNT_DRAWMODE, int(bPntDraw ? 1:0) );
 	psys.SetParam ( CLR_MODE, iClrMode );	
+}
 
+void run()
+{
 #ifdef EMSCRIPTEN
   emscripten_set_main_loop(step, 60, true);
 #else
@@ -76,7 +102,7 @@ void init ()
   }
 #endif
 }
-
+} // extern "C"
 
 int main ( int argc, char **argv )
 {
