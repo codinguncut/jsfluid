@@ -28,9 +28,9 @@ Notes
 - Press 'h' for help screen. This shows keyboard cmds available.
 
 - By default, GPU simulation is off.
-  When running the fluid_gpu.exe, press 'g' to start/stop GPU simulation.
+  When running the `fluid_gpu.exe`, press 'g' to start/stop GPU simulation.
 
-- Disabling shadows in common_defs.h will greatly speed up the simulation
+- Disabling shadows in `common_defs.h` will greatly speed up the simulation
   (You can also press 's' to render without shadows)
 
 - The GPU integrator is not yet complete. Integration always takes place on the CPU, in both CPU and GPU modes. (As a result, this forces a bus transfer to and from the GPU per cycle. Once the integrator is finished, GPU simulation performance should increase significantly.)
